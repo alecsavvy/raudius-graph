@@ -1,6 +1,7 @@
-use crate::entities::{prelude::*, *};
 use async_graphql::{Context, EmptyMutation, EmptySubscription, Object, Schema};
 use sea_orm::{DatabaseConnection, DbErr, EntityTrait};
+
+use crate::entities::{prelude::*, *};
 
 pub type AudiusSchema = Schema<QueryRoot, EmptyMutation, EmptySubscription>;
 
@@ -12,7 +13,6 @@ impl QueryRoot {
         "partner 🤠"
     }
 
-    /* User Queries */
     async fn users(&self, ctx: &Context<'_>) -> Result<Vec<users::Model>, DbErr> {
         let db = ctx
             .data::<DatabaseConnection>()
