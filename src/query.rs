@@ -20,8 +20,9 @@ macro_rules! q {
                         .map_err(|e| DbErr::Custom(e.message))?;
                     <$entity>::find().all(db).await
                 }
-            ),+
+            )+
 
+            // TODO: macro-ize get by id as well
             async fn user(
                 &self,
                 ctx: &Context<'_>,
@@ -36,6 +37,6 @@ macro_rules! q {
     };
 }
 
-q!([users, Users]);
+q!([users, Users], [tracks, Tracks], [playlists, Playlists]);
 
 pub type AudiusSchema = Schema<QueryRoot, EmptyMutation, EmptySubscription>;
