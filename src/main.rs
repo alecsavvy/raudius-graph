@@ -7,6 +7,8 @@ use axum::{
     Router, Server,
 };
 
+pub mod entities;
+
 pub type AudiusSchema = Schema<QueryRoot, EmptyMutation, EmptySubscription>;
 
 pub struct QueryRoot;
