@@ -5,7 +5,7 @@ use std::io::prelude::*;
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
 
-    let mut f = File::create("src/query_2.rs").expect("could not create file");
+    let mut f = File::create("src/query.rs").expect("could not create file");
     let header = "
     use async_graphql::{Context, EmptyMutation, EmptySubscription, Object, Schema};
     use sea_orm::{DatabaseConnection, DbErr, EntityTrait};
