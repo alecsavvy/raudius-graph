@@ -13,6 +13,7 @@ use crate::query::QueryRoot;
 pub mod db;
 pub mod entities;
 pub mod query;
+pub mod query_2;
 
 pub type AppResult<T = ()> = Result<T, Box<dyn std::error::Error>>;
 
