@@ -1,4 +1,4 @@
-use async_graphql::{http::GraphiQLSource, EmptyMutation, EmptySubscription, Object, Schema};
+use async_graphql::{http::GraphiQLSource, EmptyMutation, EmptySubscription, Schema};
 use async_graphql_axum::{GraphQLRequest, GraphQLResponse};
 use axum::{
     extract::Extension,
@@ -10,6 +10,7 @@ use query::AudiusSchema;
 
 use crate::query::QueryRoot;
 
+pub mod db;
 pub mod entities;
 pub mod query;
 
@@ -25,7 +26,10 @@ async fn graphiql() -> impl IntoResponse {
 
 #[tokio::main]
 async fn main() -> AppResult {
-    let schema = Schema::build(QueryRoot, EmptyMutation, EmptySubscription).finish();
+    let db = db::set_up_db().await?;
+    let schema = Schema::build(QueryRoot, EmptyMutation, EmptySubscription)
+        .data(db)
+        .finish();
 
     let app = Router::new()
         .route("/", get(graphiql).post(graphql_handler))
