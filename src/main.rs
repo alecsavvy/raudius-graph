@@ -6,19 +6,12 @@ use axum::{
     routing::get,
     Router, Server,
 };
+use query::AudiusSchema;
+
+use crate::query::QueryRoot;
 
 pub mod entities;
-
-pub type AudiusSchema = Schema<QueryRoot, EmptyMutation, EmptySubscription>;
-
-pub struct QueryRoot;
-
-#[Object]
-impl QueryRoot {
-    async fn howdy(&self) -> &'static str {
-        "partner"
-    }
-}
+pub mod query;
 
 pub type AppResult<T = ()> = Result<T, Box<dyn std::error::Error>>;
 
