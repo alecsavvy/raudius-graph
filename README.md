@@ -6,7 +6,7 @@ A graphql interface for models in the audius-protocol discovery provider databas
 
 - [X] build graphql schema from public swagger json
 - [ ] generate structs from graphql schema
-- [ ] generate db entities from database schema
+- [X] generate db entities from database schema
 - [ ] add API
 - [ ] tie queries to entities
 - [ ] add dynamic configuration via .env
