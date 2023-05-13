@@ -4,7 +4,9 @@ name = "raudius-graph"
 version = "0.2.0"
 
 [dependencies]
+axum = "0.6"
 async-graphql = "5.0"
+async-graphql-axum = "5.0"
 async-trait = { version = "0.1.53" }
 dotenv = "0.15.0"
 sea-orm = { version = "0.11", features = ["sqlx-postgres", "runtime-tokio-native-tls", "postgres-array"] }
